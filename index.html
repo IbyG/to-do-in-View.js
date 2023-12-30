@@ -5,19 +5,27 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Vue.js Todo App</title>
 		<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+		<link rel="stylesheet" href="styles.css">
 	</head>
 	<body>
 		<div id="app">
 			<!-- app content will go here -->
-			<h1>My Todo App</h1>
-			<input v-model="newTask" @keyup.enter="addTask" placeholder="Add a new task">
-			<ul>
-				<li v-for="(task, index) in tasks" :key="index">
-					<input type="checkbox" v-model="task.completed">
-					{{task.text}}
-					<button @click="deleteTask(index)">Delete</button>
-				</li>
-			</ul>
+			<div id="app">
+				<div class="header">
+				<h1>My Todo App</h1>
+				<input v-model="newTask" @keyup.enter="addTask" placeholder="Add a new task">
+				</div>
+			
+
+			<div class="task-list-container">
+				<ul>
+					<li v-for="(task, index) in tasks" :key="index">
+						<input type="checkbox" v-model="task.completed">
+						{{task.text}}
+						<button @click="deleteTask(index)">Delete</button>
+					</li>
+				</ul>
+			</div>
 		</div>
 
 		<Script>
