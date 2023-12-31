@@ -37,8 +37,17 @@ ul {
   margin: 0;
 }
 
+.category-header{
+	background-color:#393939;
+	color: #66ff66;
+	padding: 5px;
+	margin: 10px 0;
+	border-radius: 5px;
+
+}
 .todo-item {
   animation: fallFromTop 0.5s ease-out;
+  margin-bottom:10px;
 }
 
 @keyframes fallFromTop {

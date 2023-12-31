@@ -19,17 +19,19 @@
       <input v-model="newTask" @keyup.enter="addTask" placeholder="Add a new task">
     </div>
 
-    <div class="task-list-container">
-      <ul @dragover.prevent="allowDrop" @drop="drop">
-        <li v-for="(task, index) in tasks" :key="task.id" :draggable="true" @dragstart="dragStart(event, task)">
-	  <span class="drag-handle">&#9776</span>
-          <input type="checkbox" v-model="task.completed">
-          {{ task.text }}
-          <button @click="deleteTask(index)">X</button>
-        </li>
-      </ul>
-    </div>
+    <div class="task-list-container" @dragover.prevent="allowDrop" @drop="drop" @dragleave="showDragHandle = false">
+  <div v-for="category in categories" :key="category">
+    <div class="category-header">{{ category }}</div>
+    <ul>
+      <li v-for="(task, index) in tasks" :key="task.id" :draggable="true" @dragstart="dragStart(event, task)" v-if="task.category === category">
+        <span class="drag-handle">&#9776;</span>
+        <input type="checkbox" v-model="task.completed">
+        {{ task.text }}
+        <button @click="deleteTask(index)">Delete</button>
+      </li>
+    </ul>
   </div>
+</div>
 
   <script src="app.js"></script>
 </body>
