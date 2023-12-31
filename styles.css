@@ -4,6 +4,7 @@ body {
   background-color: #121212;
   color: #66ff66;
   font-family: 'Orbitron', sans-serif;
+  margin: 0;
 }
 
 .header {
@@ -17,37 +18,43 @@ body {
 
 #app {
   text-align: center;
-  padding-top: 0px;
+  padding-top: 60px; /* Adjusted padding to account for the header height */
   width: 100%;
 }
 
 .task-list-container {
-  max-width: 400px;
-  width: 100%;
-  margin: 0 auto;
-  max-height: calc(100vh - 100px);
-  /*overflow-y: hidden;*/
-  /*margin-top: 30px; */
-  padding-top: 110px;
+  display: flex;
+  flex-direction: column; /* Updated to column layout */
+  align-items: center; /* Center the categories */
 }
 
-ul {
-  list-style-type: none;
-  padding: 0px;
-  margin: 0;
+.category-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 600px; /* Adjust the maximum width as needed */
+  margin: 0 auto; /* Center the categories within the maximum width */
+  margin-top: 90px; /* Add margin to separate the category container from the tasks */
+}
+
+.category-column {
+  width: 200px;
+  margin: 0 10px;
 }
 
 .category-header{
-	background-color:#393939;
-	color: #66ff66;
-	padding: 5px;
-	margin: 10px 0;
-	border-radius: 5px;
-
+	width: 200px;
+  background-color: #393939;
+  color: #66ff66;
+  padding: 5px;
+  border-radius: 5px;
+  min-width: 150px;
+  text-align: center;
 }
+
 .todo-item {
   animation: fallFromTop 0.5s ease-out;
-  margin-bottom:10px;
+  margin-bottom: 10px;
 }
 
 @keyframes fallFromTop {
@@ -62,15 +69,18 @@ ul {
 }
 
 li {
-	position: relative;
-  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 10px 0; /* Adjusted margin to create space for the drag handle */
   background-color: #262626;
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(102, 255, 102, 0.5);
 }
 
-input, button {
+input,
+button {
   background-color: #393939;
   color: #66ff66;
   border: 1px solid #66ff66;
@@ -89,13 +99,8 @@ button:hover {
 }
 
 .drag-handle {
-	position: absolute;
-	left: 20px;
-	top: 50%;
-	transform: translateY(-50%);
-	cursor: move;
-	color: #66ff66;
-	display: inline-block;
-	margin-right: 5px;
+  margin-right: 10px; /* Adjusted margin to create space between drag handle and task text */
+  color: #66ff66;
+  cursor: move;
 }
 
