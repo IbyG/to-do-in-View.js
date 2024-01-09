@@ -1,45 +1,35 @@
-<!-- index.html -->
-
-<!DOCTYPE html>
-<html lang="en">
+<html land="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vue.js Todo App</title>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-ezr4XSi30aL3G5HfM/Z8+/4p4uG/7+VgRtluWCef9eIkkC9zBnAdcFlf9cDA8jo3" crossorigin="anonymous">
+  <meta name="vieport" content="width=device-width, initial-scale=1.0">
+  <title> learning Vue</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
-</head>
+
 <body>
+<h1> Goodbye, World</h1>
 
-  <div id="app">
-    <div class="header">
-      <h1>My Todo App</h1>
-      <input v-model="newTask" @keyup.enter="addTask" placeholder="Add a new task">
-    </div>
+<!--<div id="app"></div>-->
 
-
-  <div class="task-list-container" @dragover.prevent="allowDrop" @drop="drop" @dragleave="showDragHandle = false">
-  <div class="center-container">
-    <div class="category-container">
-      <div v-for="category in categories" :key="category">
-        <div class="category-column">
-          <div class="category-header">{{ category }}</div>
-          <ul>
-            <li v-for="(task, index) in tasks" :key="task.id" :draggable="true" @dragstart="dragStart(event, task)" v-if="task.category === category">
-              <span class="drag-handle">&#9776;</span>
-              {{ task.text }}
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+<div id="app2">
+  <div v-if="showbooks">
+    <p>{{ title }} - {{ author }} - {{age}}</p>
+    <!--<p>{{ author }}</p>
+    <p>{{ age }}</p> -->
   </div>
+  
+
+  <button v-on:click="age++">Increase age</button>
+  <button v-on:click="age--">Decrease age</button><br><br>
+  <dv @click="changeTitle('oathbringer')">Change Title variable</dv><br><br>
+  <dv @click="changeTitle2()">Change Title static</dv><br><br>
+
+  <button @click="showhide()">
+    <span v-if="showbooks">Hide Text</span>
+    <span v-if="!showbooks">Show Text</span>
+  </button><br><br>
 </div>
 
-
-  <script src="app.js"></script>
+<script src=app.js></script>
 </body>
 </html>
-

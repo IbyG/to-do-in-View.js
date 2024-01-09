@@ -1,50 +1,46 @@
-// app.js
+console.log('hello, vue')
 
-new Vue({
-  el: '#app',
-  data: {
-    newTask: '',
-    showDragHandle: false,
-    tasks: [
-      { id: 1, text: 'Learn Vue.js', completed: false, category: 'To Do' },
-      { id: 2, text: 'Build a to-do app', completed: true, category: 'In Progress' },
-      { id: 3, text: 'Implement Kanban view', completed: false, category: 'Done' },
-      // Add more tasks as needed with different categories
-    ],
-    categories: ['To Do', 'In Progress', 'Done'], // Define the possible categories
+const app = Vue.createApp({
+  // data, functions 
+  template: '<h2>I am the template</h2>'
+}) 
+//app.mount('#app')
+
+const app2 = Vue.createApp({
+  data() {
+    return {
+      showbooks: true,
+      title: 'The final empire',
+      author: "Brandon George",
+      age: '12'
+    }
   },
+
+  //in the methods is where we define the functions
   methods: {
-    addTask: function() {
-      if (this.newTask.trim() !== '') {
-        const newTask = {
-          id: Date.now(),
-          text: this.newTask,
-          completed: false,
-          category: 'To Do', // Default category
-        };
-        this.tasks.push(newTask);
-        this.newTask = '';
+    //taking a variable and setting the title to be that input
+    changeTitle(title) {
+      console.log('you clicked change title')
+      this.title=title
+    },
+    //setting title to a static value
+    changeTitle2(){
+      console.log('you clicked change title 2')
+      this.title = "Ibrahim George book"
+    },
+    showhide(){
+      /*
+      if(this.showbooks == true){
+        this.showbooks = false
+      }else{
+        this.showbooks = true
       }
-    },
-    deleteTask: function(index) {
-      this.tasks.splice(index, 1);
-    },
-    dragStart: function(event, task) {
-      event.dataTransfer.setData('text/plain', task.id.toString());
-    },
-    allowDrop: function(event) {
-      event.preventDefault();
-      this.showDragHandle = true;
-    },
-    drop: function(event) {
-      event.preventDefault();
-      this.showDragHandle = false;
-      const taskId = parseInt(event.dataTransfer.getData('text/plain'), 10);
-      const taskIndex = this.tasks.findIndex(task => task.id === taskId);
-      const droppedTask = this.tasks.splice(taskIndex, 1)[0];
-      const newIndex = Array.from(event.target.parentNode.children).indexOf(event.target);
-      this.tasks.splice(newIndex, 0, droppedTask);
-    },
-  },
-});
+      */
+     this.showbooks = !this.showbooks
 
+    }
+  }
+})
+app2.mount('#app2')
+
+//conditional rendering
