@@ -43,4 +43,52 @@ const app2 = Vue.createApp({
 })
 app2.mount('#app2')
 
-//conditional rendering
+
+const app3 = Vue.createApp({
+  data(){
+    return{
+      x: 0,
+      y: 0
+    }
+  },
+  methods: {
+    handleEvent(e){
+      console.log(e, e.type)
+    },
+    handleMousemove(e){
+      this.x = e.offsetX
+      this.y = e.offsetY
+    }
+  }
+}) 
+app3.mount('#app3')
+
+
+const app4 = Vue.createApp({
+  data (){
+    return{
+      books:[
+        {title: "t1", author: "ibiG",isFav: true},
+        {title: "t2", author: "ibzG",isFav: false},
+        {title: "t3", author: "ibG",isFav: true}
+      ]
+    }
+  },
+
+  methods: {
+    handlefav(book){
+      book.isFav = !book.isFav
+    }
+  }
+}) 
+app4.mount('#app4')
+
+//attribute binding
+const app5 = Vue.createApp({
+  data(){
+    return {
+      url: 'https://ibyg.github.io/Personal_Portfolio/'
+    }
+  }
+}) 
+app5.mount('#app5')

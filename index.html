@@ -4,6 +4,7 @@
   <meta name="vieport" content="width=device-width, initial-scale=1.0">
   <title> learning Vue</title>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -26,9 +27,45 @@
 
   <button @click="showhide()">
     <span v-if="showbooks">Hide Text</span>
-    <span v-if="!showbooks">Show Text</span>
+    <span v-if="!showbooks">showbooks Text</span>
   </button><br><br>
 </div>
+
+<div id="app3">
+<!-- Mouse events-->
+<h1>Mouse Events (look at console logs)</h1>
+<div class="box" @mouseover="handleEvent">mouseover (enter)</div>
+<div class="box" @mouseleave="handleEvent">mouse leave</div>
+<div class="box" @dblclick="handleEvent"> double click</div>
+<div class="box" @mousemove="handleMousemove">position: {{ x }}  {{ y }}</div>
+</div>
+
+
+<div id="app4">
+  <h1>V-For looping through book array</h1>
+  <ul>
+    <!--  this is the same as saying for each book in books print out the following fields-->
+    <li v-for="book in books"> 
+      <h3>{{book.title}} {{book.author}}</h3>
+    </li>
+    </ul>
+
+    <!-- show the favorites-->
+    <h1>V-For looping through array highlighting the favourites and toggle them on and off</h1>
+    <ul>
+    <li  v-for="book in books"   v-bind:class="{fav: book.isFav }" @click="handlefav(book)"> 
+    <!--<li  v-for="book in books" v-bind:class="{fav: book.isFav }"  -->
+      <h3>{{book.title}} {{book.author}} </h3>
+    </li>
+  </ul>
+</div>
+
+  <div id="app5">
+    <!-- Attribute binding-->  
+    <a v-bind:href="url">best website ever</a><br><br>
+    <a :href="url">best website ever</a>
+    
+  </div>
 
 <script src=app.js></script>
 </body>
